@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const Login = () => {
     const [email, setEmail] = useState("");
@@ -28,15 +28,27 @@ export const Login = () => {
     };
 
     return (
-        <div className="container mt-5">
-            <h2>Iniciar Sesión</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="email" placeholder="Email" className="form-control mb-3" 
-                       value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <input type="password" placeholder="Contraseña" className="form-control mb-3" 
-                       value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <button type="submit" className="btn btn-success">Ingresar</button>
-            </form>
+        <div className="container mt-5 d-flex justify-content-center">
+            <div className="card shadow-sm" style={{ maxWidth: "400px", width: "100%" }}>
+                <div className="card-body p-4">
+                    <h2 className="text-center mb-4">Iniciar Sesión</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <input type="email" placeholder="Correo electrónico" className="form-control" 
+                                   value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        </div>
+                        <div className="mb-4">
+                            <input type="password" placeholder="Contraseña" className="form-control" 
+                                   value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        </div>
+                        <button type="submit" className="btn btn-success w-100">Ingresar</button>
+                    </form>
+                    <div className="text-center mt-3">
+                        <span className="text-muted">¿No tienes cuenta? </span>
+                        <Link to="/signup" className="text-decoration-none">Regístrate ahora</Link>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
